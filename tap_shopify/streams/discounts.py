@@ -20,7 +20,16 @@ class Discounts(Stream):
             dict: Transformed discount object.
         """
         
-        discount = obj.pop ("discount")
+        discount = obj.pop("discount")
+        codes = obj.pop("codes", None)
+        
+        if codes is not None:
+            _codes = [
+                node["code"]
+                for code in codes["edges"]
+                if (node := code.get("node")) and "code" in node
+            ]
+            obj["codes"] = _codes
         
         obj["discount"] = json.dumps(discount)
         obj["createdAt"] = discount.get("createdAt")
@@ -592,6 +601,7 @@ class Discounts(Stream):
                                 }
                                 # DiscountAutomaticApp
                                 ... on DiscountAutomaticApp {
+                                    __typename
                                     appDiscountType {
                                         functionId
                                     }
@@ -621,6 +631,7 @@ class Discounts(Stream):
                                 }
                                 # DiscountCodeApp
                                 ... on DiscountCodeApp {
+                                    __typename
                                     appDiscountType {
                                         functionId
                                     }
