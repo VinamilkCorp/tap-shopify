@@ -21,7 +21,7 @@ class Discounts(Stream):
         """
         
         discount = obj.pop("discount")
-        codes = obj.pop("codes", None)
+        codes = discount.pop("codes", None)
         
         if codes is not None:
             _codes = [
