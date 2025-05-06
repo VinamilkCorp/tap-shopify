@@ -29,7 +29,7 @@ class Discounts(Stream):
                 for code in codes["edges"]
                 if (node := code.get("node")) and "code" in node
             ]
-            obj["codes"] = _codes
+            discount["codes"] = _codes
         
         obj["discount"] = json.dumps(discount)
         obj["createdAt"] = discount.get("createdAt")
