@@ -24,7 +24,7 @@ SDC_KEYS = {'id': 'integer', 'name': 'string', 'myshopify_domain': 'string'}
 def initialize_shopify_client():
     api_key = Context.config['api_key']
     shop = Context.config['shop']
-    version = '2025-01'
+    version = '2025-04'
     session = shopify.Session(shop, version, api_key)
     shopify.ShopifyResource.activate_session(session)
 

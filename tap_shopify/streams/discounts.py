@@ -6,7 +6,7 @@ from tap_shopify.streams.base import Stream
 class Discounts(Stream):
     """Stream class for Shopify Discounts."""
     name = "discounts"
-    data_key = "discounts"
+    data_key = "discountNodes"
     replication_key = "updatedAt"
     
     def transform_object(self, obj: dict):
@@ -24,7 +24,7 @@ class Discounts(Stream):
         
         obj["discount"] = json.dumps(discount)
         obj["createdAt"] = discount.get("createdAt")
-        obj["updatedAt"] = discount.get("createdAt")
+        obj["updatedAt"] = discount.get("updatedAt")
 
         return obj
 
