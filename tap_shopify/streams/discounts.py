@@ -36,8 +36,8 @@ class Discounts(Stream):
             str: GraphQL query string.
         """
         return """
-            query discountNodes($first: Int!, $after: String, $query: String) {
-                discounts(first: $first, after: $after, query: $query, sortKey: UPDATED_AT) {
+            query Discounts($first: Int!, $after: String, $query: String) {
+                discountNodes(first: $first, after: $after, query: $query, sortKey: UPDATED_AT) {
                     edges {
                         node {
                             id
